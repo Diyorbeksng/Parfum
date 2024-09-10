@@ -1,0 +1,77 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+
+{% block title %}Каталог{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'catalog/css/catalog.css' %}">
+{% endblock %}
+
+
+{% block body %}
+<div class="catalog-header">
+    <div class="catalog-header-item">
+        
+    </div>
+</div>
+
+<div class="catalog-menu">
+  <H3>Каталог</H3>
+</div>
+
+<div class="catalog-items">
+
+
+  {% for el in goods %}
+    
+      <div class="catalog-item">
+        <a href="{% url 'catalog:product' el.slug %}">
+        {% if el.discount %}
+          <span class="badge bg-warning text-dark">Скидка {{el.discount}} %</span>
+        {% endif %}
+        <div class="item-image">
+          {% if el.image %}
+            <img src="{{ el.image.url }}" alt="{{ el.name }}">
+          {% else %}
+            <img src="{% static 'all/notfound.jpg' %}" alt="image not found">
+          {% endif %}
+        </div>
+        <div class="description">
+          <h5>{{el.name}}</h5>
+          <p class="product_id">id: {{ el.display_id }}</p>
+  
+  
+          <div class="product_bottom">
+            {% if el.discount %}
+              <p style="display: inline;"><s>{{el.price}}</s>СУМ</p>
+              <p style="display: inline;"><strong>{{el.sell_price }}00 СУМ</strong></p>
+  
+            {% else %}
+              <p><strong>{{el.price}} СУМ</strong></p>
+            {% endif %}
+  
+            <div class="star">
+              <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+              <h6>4.9</h6><h6 style="color: rgb(91, 91, 91);">10 оценок</h6>
+            </div>
+          </a>
+            <button class="btn">Купить</button>
+          </div>
+          
+        </div>
+      </div>
+    
+  {% endfor %}
+
+</div>
+
+
+
+
+{% endblock %}
+
+{% block footer %}
+{% include "main/footer.html" %}
+{% endblock footer %}
+
+

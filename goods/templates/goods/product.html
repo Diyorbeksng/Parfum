@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+  {{ product.name }}
+{% endblock %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'catalog/css/product.css' %}" />
+{% endblock %}
+
+{% block body %}
+  <div class="product">
+    <div class="product-header">
+        <div class="e"></div>
+      <div class="_header">
+        <a href="{% url 'catalog:catalog' %}" class="back"><h1><</h1></a>
+        <div class="opisanye"></div>
+        <div class="izbr">
+          <a href="#" class="back"><i class="fa-regular fa-heart"></i></a>
+          <a href="#" class="back"><i class="fa-solid fa-share-nodes"></i></a>
+        </div>
+      </div>
+      <script src="{% static 'catalog/js/product.js' %}"></script>
+      <div class="product-image">
+        {% if product.image %}
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+        {% else %}
+          <img src="{% static 'all/notfound.jpg' %}" alt="image not found" />
+        {% endif %}
+      </div>
+    </div>
+    {% comment %} product body {% endcomment %}
+    <div class="product-body">
+      <h1> {{product.name}} </h1>
+    </div>
+  </div>
+{% endblock %}
+{% block footer %}
+  {% include 'main/footer.html' %}
+{% endblock %}

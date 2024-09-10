@@ -1,0 +1,58 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% comment %} {% load goods_tags %} {% endcomment %}
+
+{% block title %}Каталог{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'catalog/css/filter.css' %}">
+{% endblock %}
+
+
+
+
+
+{% block body %}
+
+
+
+<div class="main">
+
+    <ul>
+        {% comment %} {% tag_categories as categories %}
+        {% for category in categories %}
+        <a href="{% url "catalog:catalog" category.slug %}">
+            <li>
+                <img src="{% static 'all/notfound.jpg' %}" alt="img not found" class="img">
+                <h4>{{category.name}}</h4>
+            </li>
+        </a>
+        {% endfor %} {% endcomment %}
+        <a href="{% url "goods:index" %}">
+            <li>a</li>
+        </a><a href="{% url "goods:index" %}">
+            <li>b</li>
+        </a>
+        <a href="{% url "admin:index" %}">
+            <li><h4>Админ панель</h4></li>
+        </a>
+    </ul>
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+{% block footer %}
+{% include "main/footer.html" %}
+{% endblock footer %}
+
+

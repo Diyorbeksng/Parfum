@@ -42,8 +42,7 @@ INSTALLED_APPS = [
 
 #---приложении---
     'main',
-
-
+    'goods',
 #---end#coment---
 ]
 
