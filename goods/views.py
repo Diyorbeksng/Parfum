@@ -11,3 +11,4 @@ def filter(request):
 
 def product(request):
     return render(request, 'goods/product.html')
+#fsdfedgdrgergergre
